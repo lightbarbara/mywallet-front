@@ -1,12 +1,9 @@
-import styled from "styled-components"
+import MainContainer from "../styles/MainContainer"
 
 export default function NewTransaction() {
     return (
-        <Container>
-        </Container>
+        <MainContainer>
+            
+        </MainContainer>
     )
 }
-
-const Container = styled.div`
-
-`

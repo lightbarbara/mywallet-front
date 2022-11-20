@@ -12,13 +12,13 @@ input, button {
 	border: none;
     font-family: 'Raleway', sans-serif;
     font-size: 1.75vh;
+    padding: 0 14px;
+    box-sizing: border-box
 }
 
 input, input::placeholder {
     font-weight: 400;
     color: #000000;
-    padding: 0 7px;
-    box-sizing: border-box
 }
 
 button {

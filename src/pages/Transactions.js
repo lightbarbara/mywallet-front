@@ -1,6 +1,6 @@
 import MainContainer from "../styles/MainContainer"
 
-export default function Home() {
+export default function Transactions() {
     return (
         <MainContainer>
             <div>

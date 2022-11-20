@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ContainerAuth from "../styles/ContainerAuth"
@@ -22,12 +23,22 @@ export default function SignUp() {
         })
     }
 
-    function sendForm(e) {
+    async function sendForm(e) {
         e.preventDefault()
         if (form.password !== passwordConfirmation) {
-            alert('Senhas diferentes')
+            alert('As senhas precisam ser iguais')
+            return
         }
-        navigate('/')
+
+        try {
+
+            await axios.post('http://localhost:5000/sign-up', form)
+            navigate('/')
+
+        } catch (err) {
+            alert(err.response.data.message)
+        }
+
     }
 
     return (

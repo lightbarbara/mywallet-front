@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import ContainerAuth from "../styles/ContainerAuth"
@@ -19,9 +20,18 @@ export default function SignIn() {
         })
     }
 
-    function sendForm(e) {
+    async function sendForm(e) {
         e.preventDefault()
-        navigate('/home')
+        
+        try {
+
+            await axios.post('http://localhost:5000/', form)
+            navigate('/transactions')
+
+        } catch (err) {
+            alert(err.response.data.message)
+        }
+
     }
 
     return (

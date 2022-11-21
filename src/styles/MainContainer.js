@@ -28,6 +28,7 @@ gap: 2vh;
 
 & > div:nth-child(2) {
     display: flex;
+    flex-direction: column;
     background-color: white;
     width: 85vw;
     height: 70vh;

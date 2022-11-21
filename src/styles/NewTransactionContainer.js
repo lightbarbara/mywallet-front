@@ -7,7 +7,6 @@ flex-direction: column;
 gap: 2vh;
 align-items: center;
 justify-content: center;
-gap: 3vh;
 
 & > div:nth-child(1) {
     display: flex;

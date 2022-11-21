@@ -6,14 +6,17 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { urlBack } from "../constants/urls"
 import { Link } from "react-router-dom"
+import TransactionContainer from "../styles/TransactionContainer"
 
-function Transaction({ date, description, value }) {
+function Transaction({ date, description, value, type }) {
     return (
-        <>
-            <span>{date}</span>
-            <span>{description}</span>
+        <TransactionContainer type={type}>
+            <span>
+                <span>{date}</span>
+                <span>{description}</span>
+            </span>
             <span>{value}</span>
-        </>
+        </TransactionContainer>
     )
 }
 
@@ -35,8 +38,9 @@ export default function Transactions() {
 
         try {
 
-            const resTransactions = await axios.get(`${urlBack}transactions`, config)
-            setTransactions(resTransactions.data)
+            const res = await axios.get(`${urlBack}transactions`, config)
+            setTransactions(res.data)
+            console.log(res.data)
 
         } catch (err) {
             console.log(err)
@@ -51,9 +55,9 @@ export default function Transactions() {
                 <img alt='log out' src={logout} />
             </div>
             <div>
-                {transactions.length > 0 ? transactions.map(t => {
-                    <Transaction date={t.date} description={t.description} value={t.value} />
-                }) : <p>Não há registros de entrada ou saída</p>}
+                {transactions.length > 0 ? transactions.map(t =>
+                    <Transaction date={t.date} description={t.description} value={t.value} type={t.type} />
+                ) : <p>Não há registros de entrada ou saída</p>}
             </div>
             <div>
                 <Link to='/new-transaction/entrada'>

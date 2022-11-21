@@ -9,12 +9,21 @@ export default function NewTransaction() {
 
     const { type } = useParams()
 
+    const token = localStorage.getItem('token')
+
     const navigate = useNavigate()
 
     const [form, setForm] = useState({
         value: '',
-        description: ''
+        description: '',
+        type
     })
+
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
 
     function handleForm(e) {
         setForm({
@@ -28,18 +37,13 @@ export default function NewTransaction() {
 
         try {
 
-            const res = await axios.post(`${urlBack}new-transaction`, form)
-
-            localStorage.setItem('token', res.data.token)
-            localStorage.setItem('name', res.data.name)
-
-            navigate('/transactions')
+            await axios.post(`${urlBack}new-transaction`, form, config)
 
         } catch (err) {
             alert(err.response.data.message)
             console.log(err)
         }
-
+        navigate('/transactions')
     }
 
     return (

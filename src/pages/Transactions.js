@@ -5,7 +5,7 @@ import minus from '../assets/minus.png'
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { urlBack } from "../constants/urls"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import TransactionContainer from "../styles/TransactionContainer"
 
 function Transaction({ date, description, value, type }) {
@@ -22,6 +22,8 @@ function Transaction({ date, description, value, type }) {
 
 export default function Transactions() {
 
+    const navigate = useNavigate()
+
     const token = localStorage.getItem('token')
 
     const name = localStorage.getItem('name')
@@ -32,6 +34,19 @@ export default function Transactions() {
         headers: {
             'Authorization': `Bearer ${token}`
         }
+    }
+
+    async function logoutFunc() {
+
+        try {
+            await axios.delete(urlBack, config)
+            localStorage.removeItem('token')
+            localStorage.removeItem('name')
+            navigate('/')
+        } catch (err) {
+            console.log(err)
+        }
+        
     }
 
     useEffect(async () => {
@@ -52,7 +67,7 @@ export default function Transactions() {
         <MainContainer transactions={transactions}>
             <div>
                 <p>Olá, {name}</p>
-                <img alt='log out' src={logout} />
+                <img alt='log out' src={logout} onClick={logoutFunc} />
             </div>
             <div>
                 {transactions.length > 0 ? transactions.map(t =>

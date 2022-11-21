@@ -49,7 +49,7 @@ export default function Transactions() {
         
     }
 
-    useEffect(async () => {
+    useEffect(() => async function() {
 
         try {
 

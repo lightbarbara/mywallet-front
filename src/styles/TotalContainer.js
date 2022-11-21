@@ -14,7 +14,7 @@ span:nth-child(1) {
 }
 
 span:nth-child(2) {
-    color: ${props => props.type === 'saida' ? '#C70000' : '#03AC00'}
+    color: ${props => props.tipo === 'saida' ? '#C70000' : '#03AC00'}
 }
 `
 

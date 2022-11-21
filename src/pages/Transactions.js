@@ -25,14 +25,14 @@ function Total({ transactions }) {
 
     const newTransactions = transactions.map(t => t.type === 'saida' ? t.value = Number(t.value) * (-1) : t.value = Number(t.value))
     let total = newTransactions.reduce((total, currentElement) => total + currentElement)
-    let type
+    let tipo
     if (total < 0) {
         total = total * (-1)
-        type = 'saida'
+        tipo = 'saida'
     }
 
     return (
-        <TotalContainer type={type}>
+        <TotalContainer tipo={tipo}>
             <span>SALDO</span>
             <span>{total}</span>
         </TotalContainer>

@@ -1,9 +1,9 @@
-import MainContainer from "../styles/MainContainer"
+import NewTransactionContainer from "../styles/NewTransactionContainer"
 
 export default function NewTransaction() {
     return (
-        <MainContainer>
+        <NewTransactionContainer>
             
-        </MainContainer>
+        </NewTransactionContainer>
     )
 }

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { urlBack } from "../constants/urls"
 import ContainerAuth from "../styles/ContainerAuth"
 import Form from "../styles/Form"
 
@@ -22,14 +23,19 @@ export default function SignIn() {
 
     async function sendForm(e) {
         e.preventDefault()
-        
+
         try {
 
-            await axios.post('http://localhost:5000/', form)
+            const res = await axios.post(urlBack, form)
+
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('name', res.data.name)
+
             navigate('/transactions')
 
         } catch (err) {
             alert(err.response.data.message)
+            console.log(err)
         }
 
     }

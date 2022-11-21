@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { urlBack } from "../constants/urls"
 import ContainerAuth from "../styles/ContainerAuth"
 import Form from "../styles/Form"
 
@@ -32,7 +33,7 @@ export default function SignUp() {
 
         try {
 
-            await axios.post('http://localhost:5000/sign-up', form)
+            await axios.post(`${urlBack}sign-up`, form)
             navigate('/')
 
         } catch (err) {

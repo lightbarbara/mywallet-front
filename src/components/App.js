@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import NewTransaction from "../pages/NewTransaction";
@@ -8,10 +9,10 @@ import GlobalStyle from "./GlobalStyle";
 
 export default function App() {
 
-
+    const [token, setToken] = useState('')
 
     return (
-        <UserContext.Provider value={{}}>
+        <UserContext.Provider value={{token, setToken}}>
             <GlobalStyle />
             <BrowserRouter>
                 <Routes>

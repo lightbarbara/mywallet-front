@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { UserContext } from "../contexts/UserContext";
 import NewTransaction from "../pages/NewTransaction";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -9,20 +7,16 @@ import GlobalStyle from "./GlobalStyle";
 
 export default function App() {
 
-    const [token, setToken] = useState('')
-
     return (
-        <UserContext.Provider value={{token, setToken}}>
+        <BrowserRouter>
             <GlobalStyle />
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<SignIn />} />
-                    <Route path='/sign-up' element={<SignUp />} />
-                    <Route path='/transactions' element={<Transactions />} />
-                    <Route path='/new-transaction/:type' element={<NewTransaction />} />
-                    {/* <Route path='/edit-transaction' element={<EditTransaction />} /> */}
-                </Routes>
-            </BrowserRouter>
-        </UserContext.Provider>
+            <Routes>
+                <Route path='/' element={<SignIn />} />
+                <Route path='/sign-up' element={<SignUp />} />
+                <Route path='/transactions' element={<Transactions />} />
+                <Route path='/new-transaction/:type' element={<NewTransaction />} />
+                {/* <Route path='/edit-transaction' element={<EditTransaction />} /> */}
+            </Routes>
+        </BrowserRouter>
     )
 }

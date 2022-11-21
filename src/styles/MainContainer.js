@@ -34,7 +34,6 @@ gap: 2vh;
     height: 70vh;
     margin: 0 auto;
     border-radius: 5px;
-    justify-content: ${props => props.transactions.lenght > 0 ? '' : 'center'};
     align-items: ${props => props.transactions.lenght > 0 ? '' : 'center'};
 
     p {
@@ -42,6 +41,7 @@ gap: 2vh;
         color: #868686;
         width: 50vw;
         text-align: center;
+        margin: auto;
     }
 }
 

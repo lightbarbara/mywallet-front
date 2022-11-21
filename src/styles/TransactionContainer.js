@@ -10,6 +10,9 @@ align-items: center;
 font-size: 16px;
 
 & > span:nth-child(1) {
+    display: flex;
+    gap: 3vw;
+
     & > span:nth-child(1) {
         color: #C6C6C6;
     }

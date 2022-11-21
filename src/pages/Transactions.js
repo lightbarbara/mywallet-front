@@ -49,19 +49,23 @@ export default function Transactions() {
         
     }
 
-    useEffect(() => async function() {
+    useEffect(() => {
 
-        try {
+        const getTransactions = async () => {
+            try {
 
-            const res = await axios.get(`${urlBack}transactions`, config)
-            setTransactions(res.data)
-            console.log(res.data)
-
-        } catch (err) {
-            console.log(err)
+                const res = await axios.get(`${urlBack}transactions`, config)
+                setTransactions(res.data)
+                console.log(res.data)
+    
+            } catch (err) {
+                console.log(err)
+            }
         }
 
-    }, [config])
+        getTransactions()
+        
+    }, [])
 
     return (
         <MainContainer transactions={transactions}>

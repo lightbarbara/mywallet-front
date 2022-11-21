@@ -61,7 +61,7 @@ export default function Transactions() {
             console.log(err)
         }
 
-    }, [])
+    }, [config])
 
     return (
         <MainContainer transactions={transactions}>

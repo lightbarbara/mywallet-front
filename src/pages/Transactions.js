@@ -7,6 +7,7 @@ import axios from "axios"
 import { urlBack } from "../constants/urls"
 import { Link, useNavigate } from "react-router-dom"
 import TransactionContainer from "../styles/TransactionContainer"
+import TotalContainer from "../styles/TotalContainer"
 
 function Transaction({ date, description, value, type }) {
     return (
@@ -17,6 +18,24 @@ function Transaction({ date, description, value, type }) {
             </span>
             <span>{value}</span>
         </TransactionContainer>
+    )
+}
+
+function Total({ transactions }) {
+
+    const newTransactions = transactions.map(t => t.type === 'saida' ? t.value = Number(t.value) * (-1) : t.value = Number(t.value))
+    let total = newTransactions.reduce((total, currentElement) => total + currentElement)
+    let type
+    if (total < 0) {
+        total = total * (-1)
+        type = 'saida'
+    }
+
+    return (
+        <TotalContainer type={type}>
+            <span>SALDO</span>
+            <span>{total}</span>
+        </TotalContainer>
     )
 }
 
@@ -46,7 +65,7 @@ export default function Transactions() {
         } catch (err) {
             console.log(err)
         }
-        
+
     }
 
     useEffect(() => {
@@ -56,15 +75,14 @@ export default function Transactions() {
 
                 const res = await axios.get(`${urlBack}transactions`, config)
                 setTransactions(res.data)
-                console.log(res.data)
-    
+
             } catch (err) {
                 console.log(err)
             }
         }
 
         getTransactions()
-        
+
     }, [])
 
     return (
@@ -77,6 +95,7 @@ export default function Transactions() {
                 {transactions.length > 0 ? transactions.map(t =>
                     <Transaction date={t.date} description={t.description} value={t.value} type={t.type} />
                 ) : <p>Não há registros de entrada ou saída</p>}
+                {transactions.length > 0 ? <Total transactions={transactions} /> : ''}
             </div>
             <div>
                 <Link to='/new-transaction/entrada'>

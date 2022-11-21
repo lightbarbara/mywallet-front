@@ -5,6 +5,7 @@ font-family: 'Raleway', sans-serif;
 display: flex;
 flex-direction: column;
 gap: 2vh;
+position: relative;
 
 & > div:nth-child(1) {
     display: flex;
@@ -34,14 +35,14 @@ gap: 2vh;
     height: 70vh;
     margin: 0 auto;
     border-radius: 5px;
-    align-items: ${props => props.transactions.lenght > 0 ? '' : 'center'};
+    align-items: ${props => props.transactions.length > 0 ? '' : 'center'};
+    justify-content: ${props => props.transactions.length > 0 ? '' : 'center'};
 
     p {
         font-size: 20px;
         color: #868686;
         width: 50vw;
         text-align: center;
-        margin: auto;
     }
 }
 

@@ -55,6 +55,10 @@ table {
 	height: 100vh;
 	background-color: #8C11BE;
 }
+
+a {
+	text-decoration: none;
+}
 `
 
 export default GlobalStyle

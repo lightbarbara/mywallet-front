@@ -1,9 +1,57 @@
+import { useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import Form from "../styles/Form"
 import NewTransactionContainer from "../styles/NewTransactionContainer"
+import axios from 'axios'
+import { urlBack } from "../constants/urls"
 
 export default function NewTransaction() {
+
+    const { type } = useParams()
+
+    const navigate = useNavigate()
+
+    const [form, setForm] = useState({
+        value: '',
+        description: ''
+    })
+
+    function handleForm(e) {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    async function sendForm(e) {
+        e.preventDefault()
+
+        try {
+
+            const res = await axios.post(`${urlBack}new-transaction`, form)
+
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('name', res.data.name)
+
+            navigate('/transactions')
+
+        } catch (err) {
+            alert(err.response.data.message)
+            console.log(err)
+        }
+
+    }
+
     return (
         <NewTransactionContainer>
-            
+            <div>
+                <p>Nova {type}</p>
+            </div>
+            <Form onSubmit={sendForm}>
+                <input type='text' placeholder='Valor' value={form.value} name='value' required onChange={handleForm} />
+                <input type='text' placeholder='Descrição' value={form.description} name='description' required onChange={handleForm} />
+                <button type='submit'>Salvar {type}</button>
+            </Form>
         </NewTransactionContainer>
     )
 }

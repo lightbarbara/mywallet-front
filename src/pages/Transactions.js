@@ -5,6 +5,17 @@ import minus from '../assets/minus.png'
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { urlBack } from "../constants/urls"
+import { Link } from "react-router-dom"
+
+function Transaction({ date, description, value }) {
+    return (
+        <>
+            <span>{date}</span>
+            <span>{description}</span>
+            <span>{value}</span>
+        </>
+    )
+}
 
 export default function Transactions() {
 
@@ -40,17 +51,23 @@ export default function Transactions() {
                 <img alt='log out' src={logout} />
             </div>
             <div>
-                {transactions.length > 0 ? '' : <p>Não há registros de entrada ou saída</p>}
+                {transactions.length > 0 ? transactions.map(t => {
+                    <Transaction date={t.date} description={t.description} value={t.value} />
+                }) : <p>Não há registros de entrada ou saída</p>}
             </div>
             <div>
-                <NewEntry>
-                    <img alt='plus' src={plus} />
-                    <p>Nova Entrada</p>
-                </NewEntry>
-                <NewEntry>
-                    <img alt='minus' src={minus} />
-                    <p>Nova Saída</p>
-                </NewEntry>
+                <Link to='/new-transaction/entrada'>
+                    <NewEntry>
+                        <img alt='plus' src={plus} />
+                        <p>Nova Entrada</p>
+                    </NewEntry>
+                </Link>
+                <Link to='/new-transaction/saida'>
+                    <NewEntry>
+                        <img alt='minus' src={minus} />
+                        <p>Nova Saída</p>
+                    </NewEntry>
+                </Link>
             </div>
         </MainContainer>
     )

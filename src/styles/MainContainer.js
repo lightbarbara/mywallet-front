@@ -76,6 +76,10 @@ p {
     margin: 1vh;
     color: white;
 }
+
+a {
+    text-decoration: none;
+}
 `
 
 export { MainContainer, NewEntry }

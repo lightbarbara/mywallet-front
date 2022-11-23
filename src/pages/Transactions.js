@@ -28,7 +28,7 @@ function Transaction({ id, date, description, value, type, deleted, setDeleted }
         <TransactionContainer type={type}>
             <span>
                 <span>{date}</span>
-                <span>{description}</span>
+                <Link to={`/edit-transaction/${type}/${id}`}><span>{description}</span></Link>
             </span>
             <span>
                 <span>{value}</span>

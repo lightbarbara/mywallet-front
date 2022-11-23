@@ -33,6 +33,7 @@ margin: 0 auto;
 
     & > span:nth-child(2) {
         color: #C6C6C6;
+        cursor: pointer;
     }
 }
 

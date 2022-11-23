@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import EditTransaction from "../pages/EditTransaction";
 import NewTransaction from "../pages/NewTransaction";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -15,7 +16,7 @@ export default function App() {
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/transactions' element={<Transactions />} />
                 <Route path='/new-transaction/:type' element={<NewTransaction />} />
-                {/* <Route path='/edit-transaction' element={<EditTransaction />} /> */}
+                <Route path='/edit-transaction/:type/:id' element={<EditTransaction />} />
             </Routes>
         </BrowserRouter>
     )

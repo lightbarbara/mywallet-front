@@ -23,7 +23,8 @@ position: relative;
 
     img {
         display: flex;
-        height: 3vh
+        height: 3vh;
+        cursor: pointer;
     }
 }
 

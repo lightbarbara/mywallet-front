@@ -59,6 +59,10 @@ table {
 a {
 	text-decoration: none;
 }
+
+a:visited {
+	color: initial;
+}
 `
 
 export default GlobalStyle

@@ -36,8 +36,6 @@ position: relative;
     height: 70vh;
     margin: 0 auto;
     border-radius: 5px;
-    align-items: ${props => props.transactions.length > 0 ? '' : 'center'};
-    justify-content: ${props => props.transactions.length > 0 ? '' : 'center'};
 
     & > div:nth-child(1) {
     display: flex;
@@ -45,6 +43,8 @@ position: relative;
     width: 85vw;
     height: 65vh;
     overflow: scroll;
+    align-items: ${props => props.transactions.length > 0 ? '' : 'center'};
+    justify-content: ${props => props.transactions.length > 0 ? '' : 'center'};
 
         p {
             font-size: 20px;

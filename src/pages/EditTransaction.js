@@ -54,7 +54,7 @@ export default function EditTransaction() {
             <Form onSubmit={sendForm}>
                 <input type='number' placeholder='Valor' value={form.value} name='value' required onChange={handleForm} />
                 <input type='text' placeholder='Descrição' value={form.description} name='description' required onChange={handleForm} />
-                <button type='submit'>Salvar {type}</button>
+                <button type='submit'>Atualizar {type}</button>
             </Form>
         </NewTransactionContainer>
     )

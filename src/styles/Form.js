@@ -4,6 +4,7 @@ const Form = styled.form`
 display: flex;
 flex-direction: column;
 gap: 1vh;
+cursor: pointer;
 
 input, button {
 	width: 80vw;

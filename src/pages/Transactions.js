@@ -9,14 +9,32 @@ import { Link, useNavigate } from "react-router-dom"
 import TransactionContainer from "../styles/TransactionContainer"
 import TotalContainer from "../styles/TotalContainer"
 
-function Transaction({ date, description, value, type }) {
+function Transaction({ id, date, description, value, type, deleted, setDeleted }) {
+
+    const token = localStorage.getItem('token')
+
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
+    function deleteTransaction(id) {
+        axios.delete(`${urlBack}transaction/${id}`, config)
+        setDeleted(!deleted)
+    }
+
     return (
         <TransactionContainer type={type}>
             <span>
                 <span>{date}</span>
                 <span>{description}</span>
             </span>
-            <span>{value}</span>
+            <span>
+                <span>{value}</span>
+                <span onClick={() => deleteTransaction(id)}>x</span>
+            </span>
+
         </TransactionContainer>
     )
 }
@@ -48,6 +66,8 @@ export default function Transactions() {
     const name = localStorage.getItem('name')
 
     const [transactions, setTransactions] = useState([])
+
+    const [deleted, setDeleted] = useState(false)
 
     const config = {
         headers: {
@@ -83,7 +103,7 @@ export default function Transactions() {
 
         getTransactions()
 
-    }, [])
+    }, [deleted])
 
     return (
         <MainContainer transactions={transactions}>
@@ -93,7 +113,7 @@ export default function Transactions() {
             </div>
             <div>
                 {transactions.length > 0 ? transactions.map(t =>
-                    <Transaction date={t.date} description={t.description} value={t.value} type={t.type} />
+                    <Transaction deleted={deleted} setDeleted={setDeleted} id={t._id} date={t.date} description={t.description} value={t.value} type={t.type} />
                 ) : <p>Não há registros de entrada ou saída</p>}
                 {transactions.length > 0 ? <Total transactions={transactions} /> : ''}
             </div>

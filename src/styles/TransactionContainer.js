@@ -12,7 +12,7 @@ margin: 0 auto;
 
 & > span:nth-child(1) {
     display: flex;
-    gap: 3vw;    
+    gap: 3vw;
 
     & > span:nth-child(1) {
         color: #C6C6C6;
@@ -24,8 +24,17 @@ margin: 0 auto;
 }
 
 & > span:nth-child(2) {
-        color: ${props => props.type === 'entrada' ? '#03AC00' : '#C70000'}
+    display: flex;
+    gap: 3vw;
+
+    & > span:nth-child(1) {
+        color: ${props => props.type === 'entrada' ? '#03AC00' : '#C70000'};
     }
+
+    & > span:nth-child(2) {
+        color: #C6C6C6;
+    }
+}
 
 `
 

@@ -4,7 +4,7 @@ const TotalContainer = styled.div`
 display: flex;
 justify-content: space-between;
 position: absolute;
-bottom: 17vh;
+bottom: 17.5vh;
 left: 10vw;
 width: 80vw;
 margin: 0 auto;

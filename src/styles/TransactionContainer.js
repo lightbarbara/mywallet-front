@@ -4,7 +4,7 @@ const TransactionContainer = styled.div`
 font-family: 'Raleway', sans-serif;
 display: flex;
 width: 80vw;
-height: 4vh;
+min-height: 4vh;
 justify-content: space-between;
 align-items: center;
 font-size: 16px;

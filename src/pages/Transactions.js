@@ -34,7 +34,6 @@ function Transaction({ id, date, description, value, type, deleted, setDeleted }
                 <span>{value}</span>
                 <span onClick={() => deleteTransaction(id)}>x</span>
             </span>
-
         </TransactionContainer>
     )
 }
@@ -112,9 +111,11 @@ export default function Transactions() {
                 <img alt='log out' src={logout} onClick={logoutFunc} />
             </div>
             <div>
-                {transactions.length > 0 ? transactions.map(t =>
-                    <Transaction deleted={deleted} setDeleted={setDeleted} id={t._id} date={t.date} description={t.description} value={t.value} type={t.type} />
-                ) : <p>Não há registros de entrada ou saída</p>}
+                <div>
+                    {transactions.length > 0 ? transactions.map(t =>
+                        <Transaction deleted={deleted} setDeleted={setDeleted} id={t._id} date={t.date} description={t.description} value={t.value} type={t.type} />
+                    ) : <p>Não há registros de entrada ou saída</p>}
+                </div>
                 {transactions.length > 0 ? <Total transactions={transactions} /> : ''}
             </div>
             <div>

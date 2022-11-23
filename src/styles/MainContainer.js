@@ -39,12 +39,21 @@ position: relative;
     align-items: ${props => props.transactions.length > 0 ? '' : 'center'};
     justify-content: ${props => props.transactions.length > 0 ? '' : 'center'};
 
-    p {
-        font-size: 20px;
-        color: #868686;
-        width: 50vw;
-        text-align: center;
+    & > div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    height: 65vh;
+    overflow: scroll;
+
+        p {
+            font-size: 20px;
+            color: #868686;
+            width: 50vw;
+            text-align: center;
+        }
     }
+
 }
 
 & > div:nth-child(3) {

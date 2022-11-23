@@ -52,7 +52,8 @@ export default function NewTransaction() {
                 <p>Nova {type}</p>
             </div>
             <Form onSubmit={sendForm}>
-                <input type='text' placeholder='Valor' value={form.value} name='value' required onChange={handleForm} />
+                <input type='number' placeholder='Valor' value={form.value} name='value' required onChange={handleForm} />
+                {console.log(typeof form.value)}
                 <input type='text' placeholder='Descrição' value={form.description} name='description' required onChange={handleForm} />
                 <button type='submit'>Salvar {type}</button>
             </Form>
